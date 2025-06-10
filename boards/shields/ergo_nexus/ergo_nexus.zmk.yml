@@ -1,0 +1,9 @@
+file_format: "1"
+id: ergo_nexus
+name: ErgoNexus
+type: shield
+url: https://github.com/mystster/ErgoNexus
+requires:
+  - pro_micro
+features:
+  - keys
