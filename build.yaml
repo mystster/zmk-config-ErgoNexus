@@ -20,4 +20,4 @@
 ---
 
 board: [ "nice_nano_v2" ]
-shield: [ "ergo_nexus" ]
+shield: [ "ergo_nexus_left", "ergo_nexus_right" ]
