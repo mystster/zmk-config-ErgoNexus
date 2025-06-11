@@ -7,3 +7,6 @@ requires:
   - pro_micro
 features:
   - keys
+siblings:
+  - ergo_nexus_left
+  - ergo_nexus_right

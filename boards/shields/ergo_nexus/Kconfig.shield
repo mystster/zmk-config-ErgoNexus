@@ -1,3 +1,8 @@
-# No whitespace after the comma or in your keyboard name!
-config SHIELD_ERGO_NEXUS
-    def_bool $(shields_list_contains,ergo_nexus)
+# Copyright (c) 2020 Pete Johanson
+# SPDX-License-Identifier: MIT
+
+config SHIELD_ERGO_NEXUS_LEFT
+    def_bool $(shields_list_contains,ergo_nexus_left)
+
+config SHIELD_ERGO_NEXUS_RIGHT
+    def_bool $(shields_list_contains,ergo_nexus_right)
