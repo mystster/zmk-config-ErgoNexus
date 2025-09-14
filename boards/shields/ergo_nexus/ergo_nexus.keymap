@@ -13,7 +13,7 @@
             bindings = <
                 &kp Z    &kp M    &kp K &kp A &kp U    &kp I    &kp O &kp P
             >;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
-        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
     };
  };
