@@ -1,0 +1,13 @@
+file_format: "1"
+id: ergo_nexus
+name: ErgoNexus
+type: shield
+url: https://github.com/mystster/ergonexus/
+requires: [nice_nano]
+exposes: 
+features:
+  - keys
+  - encoder
+siblings:
+  - ergo_nexus_left
+  - ergo_nexus_right
