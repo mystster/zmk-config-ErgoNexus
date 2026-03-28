@@ -27,17 +27,18 @@ exec-command-in-build-container command:
         {{image}} \
         {{command}}
 
-build-left: (exec-command-in-build-container 'west build -p -b nice_nano -- -DSHIELD=ergo_nexus_left -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DAMK_CONFIG="/workspaces/zmk-config/"')
+build-left: (exec-command-in-build-container 'west build -p -b nice_nano -- -DSHIELD=ergo_nexus_left -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DZMK_CONFIG="/workspaces/zmk-config/"')
     cp ../../zmkfirmware/zmk/app/build/zephyr/zmk.uf2 ./ergo_nexus_left.uf2
-build-right: (exec-command-in-build-container 'west build -p -b nice_nano -- -DSHIELD=ergo_nexus_right -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DAMK_CONFIG="/workspaces/zmk-config/"')
+build-right: (exec-command-in-build-container 'west build -p -b nice_nano -- -DSHIELD=ergo_nexus_right -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DZMK_CONFIG="/workspaces/zmk-config/"')
     cp ../../zmkfirmware/zmk/app/build/zephyr/zmk.uf2 ./ergo_nexus_right.uf2
-build-left-usb: (exec-command-in-build-container 'west build -p -b nice_nano -S zmk-usb-logging -- -DSHIELD=ergo_nexus_left -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DAMK_CONFIG="/workspaces/zmk-config/"')
+build-left-usb: (exec-command-in-build-container 'west build -p -b nice_nano -S zmk-usb-logging -- -DSHIELD=ergo_nexus_left -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DZMK_CONFIG="/workspaces/zmk-config/"')
     cp ../../zmkfirmware/zmk/app/build/zephyr/zmk.uf2 ./ergo_nexus_left_usb.uf2
-build-right-usb: (exec-command-in-build-container 'west build -p -b nice_nano -S zmk-usb-logging -- -DSHIELD=ergo_nexus_right -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DAMK_CONFIG="/workspaces/zmk-config/"')
+build-right-usb: (exec-command-in-build-container 'west build -p -b nice_nano -S zmk-usb-logging -- -DSHIELD=ergo_nexus_right -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DZMK_CONFIG="/workspaces/zmk-config/"')
     cp ../../zmkfirmware/zmk/app/build/zephyr/zmk.uf2 ./ergo_nexus_right_usb.uf2
-
+build-reset: (exec-command-in-build-container 'west build -p -b nice_nano -- -DSHIELD=settings_reset')
+    cp ../../zmkfirmware/zmk/app/build/zephyr/zmk.uf2 ./settings_reset.uf2
 copyto-device file:
     sudo mount /dev/sdb /mnt
     sudo cp {{file}} /mnt
-    sleep 2
+    sleep 5
     sudo umount /mnt
