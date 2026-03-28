@@ -35,9 +35,9 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)     RC(2,6) RC(2,7) RC(2,8) RC(2
         wakeup-source;
 
         row-gpios
-            = <&gpio1 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            = <&gpio1 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
             , <&gpio1 7 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            , <&gpio1 8 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            , <&gpio1 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
             , <&gpio1 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
             ;
 
