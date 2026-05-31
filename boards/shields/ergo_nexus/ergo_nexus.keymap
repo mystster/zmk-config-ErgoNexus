@@ -6,24 +6,83 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/mouse.h>
 / {
-    behaviors {
-        encoder_wheel: encoder_wheel {
-            compatible = "zmk,behavior-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            bindings = <&kp C>, <&kp R >;
-        };
-    };
     keymap {
         compatible = "zmk,keymap";
 
         default_layer { // Layer 0
+            display-name = "Base";
             bindings = <
-&kp A    &kp Q    &kp W    &kp E    &kp R    &kp T          &kp A    &kp A    &kp A    &kp A    &kp A    &kp A
-&kp A    &kp A    &kp A    &kp A    &kp A    &kp A          &kp A    &kp A    &kp A    &kp A    &kp A    &kp A
-&kp A    &kp A    &kp A    &kp A    &kp A    &kp A          &kp A    &kp A    &kp A    &kp A    &kp A    &kp A
-                  &kp A    &kp A    &kp A    &kp A          &kp A    &kp A    &kp A    &kp A
+&kp ESC    &kp Q    &kp W    &kp E    &kp R    &kp T          &kp Y    &kp U    &kp I    &kp O    &kp P    &kp BSPC
+&kp TAB    &kp A    &kp S    &kp D    &kp F    &kp G          &kp H    &kp J    &kp K    &kp L    &kp SEMI    &kp SQT
+&kp A    &kp Z    &kp X    &kp C    &kp V    &kp B          &kp N    &kp M    &kp COMMA    &kp DOT    &kp SLASH    &kp NUBS
+&kp A    &kp A    &kp A    &kp A    &kp SPACE    &mo 1          &mo 2    &kp ENTER    &kp A    &kp A    &kp A    &kp A
             >;
-            sensor-bindings = <&encoder_wheel>;
+            sensor-bindings = <
+                &inc_dec_kp LEFT RIGHT
+                &inc_dec_kp UP DOWN
+                &inc_dec_kp LEFT RIGHT
+                &inc_dec_kp UP DOWN
+            >;
+        };
+        number_layer { // Layer 1
+            display-name = "number";
+            bindings = <
+&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+&trans    &N1       &N2       &N3       &N4       &N5             &N6       &N7       &N8       &N9       &N0       &trans
+&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+&trans    &trans    &trans    &trans    &trans    &trans          &mo 3    &trans    &trans    &trans    &trans    &trans
+            >;
+            sensor-bindings = <
+                &inc_dec_kp LEFT RIGHT
+                &inc_dec_kp UP DOWN
+                &inc_dec_kp LEFT RIGHT
+                &inc_dec_kp UP DOWN
+            >;
+        };
+        cursor_layer { // Layer 2
+            display-name = "cursor";
+            bindings = <
+&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+&trans    &trans    &trans    &trans    &trans    &mo 3          &trans    &trans    &trans    &trans    &trans    &trans
+            >;
+            sensor-bindings = <
+                &inc_dec_kp LEFT RIGHT
+                &inc_dec_kp UP DOWN
+                &inc_dec_kp LEFT RIGHT
+                &inc_dec_kp UP DOWN
+            >;
+        };
+        function_layer { // Layer 3
+            display-name = "function";
+            bindings = <
+&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+            >;
+            sensor-bindings = <
+                &inc_dec_kp LEFT RIGHT
+                &inc_dec_kp UP DOWN
+                &inc_dec_kp LEFT RIGHT
+                &inc_dec_kp UP DOWN
+            >;
+        };
+        special_layer { // Layer 4
+            display-name = "special";
+            bindings = <
+&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+            >;
+            sensor-bindings = <
+                &inc_dec_kp LEFT RIGHT
+                &inc_dec_kp UP DOWN
+                &inc_dec_kp LEFT RIGHT
+                &inc_dec_kp UP DOWN
+            >;
         };
     };
  };
