@@ -29,10 +29,7 @@
 │           ├── ergo_nexus_left.overlay
 │           ├── ergo_nexus_right.conf
 │           └── ergo_nexus_right.overlay
-├── justfile                        # ビルド・タスクランナー設定
-├── ergo_nexus_left.uf2             # ビルド済みの左側ファームウェア
-├── ergo_nexus_right.uf2            # ビルド済みの右側ファームウェア
-└── settings_reset.uf2              # Bluetooth接続リセット用ファームウェア
+└── justfile                        # ビルド・タスクランナー設定
 ```
 
 ---
