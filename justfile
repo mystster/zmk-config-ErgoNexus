@@ -28,17 +28,17 @@ _exec-command-in-build-container command:
         {{command}}
 
 # build left firmware
-build-left: (_exec-command-in-build-container 'west build -p -b nice_nano//zmk -- -DSHIELD=ergo_nexus_left -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DZMK_CONFIG="/workspaces/zmk-config/"')
+build-left: (_exec-command-in-build-container 'west build -p -b nice_nano//zmk -S studio-rpc-usb-uart -- -DSHIELD=ergo_nexus_left -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DZMK_CONFIG="/workspaces/zmk-config/"')
     cp ../../zmkfirmware/zmk/app/build/zephyr/zmk.uf2 ./ergo_nexus_left.uf2
 # build right firmware
-build-right: (_exec-command-in-build-container 'west build -p -b nice_nano//zmk -- -DSHIELD=ergo_nexus_right -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DZMK_CONFIG="/workspaces/zmk-config/"')
+build-right: (_exec-command-in-build-container 'west build -p -b nice_nano//zmk -S studio-rpc-usb-uart -- -DSHIELD=ergo_nexus_right -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DZMK_CONFIG="/workspaces/zmk-config/"')
     cp ../../zmkfirmware/zmk/app/build/zephyr/zmk.uf2 ./ergo_nexus_right.uf2
 
 # build left firmware with debug
-build-left-usb: (_exec-command-in-build-container 'west build -p -b nice_nano//zmk -S zmk-usb-logging -- -DSHIELD=ergo_nexus_left -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DZMK_CONFIG="/workspaces/zmk-config/"')
+build-left-usb: (_exec-command-in-build-container 'west build -p -b nice_nano//zmk -S studio-rpc-usb-uart -S zmk-usb-logging -- -DSHIELD=ergo_nexus_left -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DZMK_CONFIG="/workspaces/zmk-config/"')
     cp ../../zmkfirmware/zmk/app/build/zephyr/zmk.uf2 ./ergo_nexus_left_usb.uf2
 # build right firmware with debug
-build-right-usb: (_exec-command-in-build-container 'west build -p -b nice_nano//zmk -S zmk-usb-logging -- -DSHIELD=ergo_nexus_right -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DZMK_CONFIG="/workspaces/zmk-config/"')
+build-right-usb: (_exec-command-in-build-container 'west build -p -b nice_nano//zmk -S studio-rpc-usb-uart -S zmk-usb-logging -- -DSHIELD=ergo_nexus_right -DZMK_EXTRA_MODULES="/workspaces/zmk-modules/" -DZMK_CONFIG="/workspaces/zmk-config/"')
     cp ../../zmkfirmware/zmk/app/build/zephyr/zmk.uf2 ./ergo_nexus_right_usb.uf2
 # build reset firmware
 build-reset: (_exec-command-in-build-container 'west build -p -b nice_nano//zmk -- -DSHIELD=settings_reset')
