@@ -18,7 +18,7 @@
 };
 &default_transform {
 	col-offset = <6>;
-}
+};
 &rotary_encoder_R_0 {
         a-gpios = <&gpio1 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         b-gpios = <&gpio1 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;

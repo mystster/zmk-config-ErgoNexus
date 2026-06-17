@@ -28,7 +28,7 @@
             display-name = "number";
             bindings = <
 &trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
-&trans    &N1       &N2       &N3       &N4       &N5             &N6       &N7       &N8       &N9       &N0       &trans
+&trans    &kp N1    &kp N2    &kp N3    &kp N4    &kp N5          &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &trans
 &trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
 &trans    &trans    &trans    &trans    &trans    &trans          &mo 3    &trans    &trans    &trans    &trans    &trans
             >;
