@@ -29,3 +29,14 @@
         b-gpios = <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
 		status = "okay";
 };
+&leds {
+    led0: led_0 {
+        gpios = <&gpio0 24 GPIO_ACTIVE_LOW>; // red LED, connected
+    };
+    led1: led_1 {
+        gpios = <&gpio0 20 GPIO_ACTIVE_LOW>; // green LED, connected
+    };
+    led2: led_2 {
+        gpios = <&gpio0 22 GPIO_ACTIVE_LOW>;  // blue LED, connected
+    };
+};
