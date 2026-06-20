@@ -57,6 +57,11 @@ RC(3,5) RC(3,4) RC(3,3) RC(3,2) RC(3,1) RC(3,0)     RC(3,6) RC(3,7) RC(3,8) RC(3
         sensors = <&rotary_encoder_L_0 &rotary_encoder_L_1 &rotary_encoder_R_0 &rotary_encoder_R_1>;
         triggers-per-rotation = <8>;
     };
+
+    soft_off_wakers {
+        compatible="zmk,soft-off-wakeup-sources";
+        wakeup-sources=<&kscan0>;
+    };
 };
 
 &physical_layout0 { // First physical layout, use different naming for other layouts
