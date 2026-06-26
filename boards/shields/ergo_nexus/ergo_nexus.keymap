@@ -3,8 +3,10 @@
 
 #include <dt-bindings/zmk/pointing.h>
 #include <behaviors.dtsi>
+#include "behaviors.dtsi"
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/bt.h>
 / {
     keymap {
         compatible = "zmk,keymap";
@@ -12,10 +14,10 @@
         default_layer { // Layer 0
             display-name = "Base";
             bindings = <
-&kp ESC    &kp Q    &kp W    &kp E    &kp R    &kp T          &kp Y    &kp U    &kp I    &kp O    &kp P    &kp BSPC
-&kp TAB    &kp A    &kp S    &kp D    &kp F    &kp G          &kp H    &kp J    &kp K    &kp L    &kp SEMI    &kp SQT
-&kp A    &kp Z    &kp X    &kp C    &kp V    &kp B          &kp N    &kp M    &kp COMMA    &kp DOT    &kp SLASH    &kp NUBS
-&kp A    &kp A    &kp A    &kp A    &kp SPACE    &mo 1          &mo 2    &kp ENTER    &kp A    &kp A    &kp A    &kp A
+&kp ESC    &kp Q    &kp W    &kp E    &kp R    &kp T          &kp Y    &kp U    &kp I     &kp O    &kp P    &bspc_del
+&kp TAB     &hm LGUI A     &hm LALT S     &hm LCTRL D     &hm LSHIFT F     &kp G           &kp H     &hm RSHIFT J     &hm RCTRL K      &hm RALT L    &hm_semi RGUI 0    &sqt_morph
+&kp A    &kp Z    &kp X    &kp C    &kp V    &kp B            &kp N    &kp M    &kp COMMA    &kp DOT    &kp SLASH    &kp NUBS
+&kp A    &kp A    &kp A    &hm LCTRL SPACE  &lt 1 INT5    &kp LGUI       &kp BSPC &lt 2 INT4    &hm RCTRL ENTER &kp A    &kp A   &kp A
             >;
             sensor-bindings = <
                 &inc_dec_kp LEFT RIGHT
@@ -27,7 +29,7 @@
         number_layer { // Layer 1
             display-name = "number";
             bindings = <
-&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+&kp TILDE &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT       &kp CARET &kp AMPS  &kp LPAR  &kp RPAR  &kp ASTRK &trans
 &trans    &kp N1    &kp N2    &kp N3    &kp N4    &kp N5          &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &trans
 &trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
 &trans    &trans    &trans    &trans    &trans    &trans          &mo 3    &trans    &trans    &trans    &trans    &trans
@@ -43,8 +45,8 @@
             display-name = "cursor";
             bindings = <
 &trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
-&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
-&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+&trans    &kp MINUS &kp PLUS  &kp EQUAL &kp LBRC  &kp RBRC        &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp PIPE  &kp GRAVE
+&trans    &kp GRAVE &trans    &kp PIPE  &kp LBKT  &kp RBKT        &kp HOME  &kp PG_DN &kp PG_UP &kp END   &trans    &trans
 &trans    &trans    &trans    &trans    &trans    &mo 3          &trans    &trans    &trans    &trans    &trans    &trans
             >;
             sensor-bindings = <
@@ -57,8 +59,8 @@
         function_layer { // Layer 3
             display-name = "function";
             bindings = <
-&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
-&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+&trans    &trans    &trans    &trans    &trans    &trans          &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6
+&trans    &trans    &trans    &trans    &trans    &trans          &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
 &trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
 &trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
             >;
@@ -73,7 +75,7 @@
             display-name = "special";
             bindings = <
 &trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
-&trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
+&trans    &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
 &trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
 &trans    &trans    &trans    &trans    &trans    &trans          &trans    &trans    &trans    &trans    &trans    &trans
             >;
