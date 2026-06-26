@@ -1,0 +1,44 @@
+
+/{
+ behaviors {
+        hm: home_row_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;                // 連打時の誤爆防止
+            require-prior-idle-ms = <125>;       // ★誤爆防止の特効薬
+            bindings = <&kp>, <&kp>;
+        };
+        bspc_del: backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSPACE>, <&kp DELETE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_RSFT)>;
+        };
+        semi_morph: semi_morph {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp SEMI>, <&kp SQT>; // 通常時はSEMI(;)、Shift時はSQT(JISでの:)
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        // ② 上記のMod-Morphをタップ側に固定した、セミコロン専用のHold-Tap
+        hm_semi: home_row_semi {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;            // 引数は「長押し時の修飾キー」の1つだけにする
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <125>;    // 誤爆防止
+            bindings = <&kp>, <&semi_morph>; // タップ側を上記のMorphに固定
+        };
+		sqt_morph: sqt_quote_morph {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LS(N7)>, <&kp LS(N2)>; // 単押しでShift+7(')、Shift押しでShift+2(")
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+	 };
+};
