@@ -46,6 +46,9 @@ build-reset: (_exec-command-in-build-container 'west build -p -b nice_nano//zmk 
 
 # copy fimware to device
 copyto-device file:
+    @sudo -v
+    @echo "10秒後に{{file}}を焼きます"
+    @sleep 10
     sudo mount /dev/sdb /mnt
     sudo cp {{file}} /mnt
     sleep 5
