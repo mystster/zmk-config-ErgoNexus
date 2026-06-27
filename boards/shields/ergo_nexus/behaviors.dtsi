@@ -1,3 +1,48 @@
+// アルファベット(A-Z)や単体の数字(1-0)は共通のため、記号類のみ定義しています。
+
+// 【数字段のShift記号】
+#define US_TILDE   LS(EQUAL)    // ~ (JISの Shift + ^)
+#define US_EXCL    LS(N1)       // !
+#define US_AT      LBKT         // @ (JISの @ 単押し)
+#define US_HASH    LS(N3)       // #
+#define US_DLLR    LS(N4)       // $
+#define US_PRCNT   LS(N5)       // %
+#define US_CARET   EQUAL        // ^ (JISの ^ 単押し)
+#define US_AMPS    LS(N6)       // & (JISの Shift + 6)
+#define US_ASTRK   LS(SQT)      // * (JIS의 Shift + :)
+#define US_LPAR    LS(N8)       // ( (JISの Shift + 8)
+#define US_RPAR    LS(N9)       // ) (JISの Shift + 9)
+
+// 【記号段】
+#define US_GRAVE   LS(LBKT)     // ` (JISの Shift + @)
+#define US_MINUS   MINUS        // -
+#define US_EQUAL   LS(MINUS)    // = (JISの Shift + -ほ)
+#define US_PLUS    LS(SEMI)     // + (JISの Shift + ;れ)
+#define US_UNDER   LS(INT1)     // _ (JISの \ろ のShift)
+
+#define US_LBKT    RBKT         // [ (JISの [む 単押し)
+#define US_RBKT    BSLH         // ] (JISの ]むの右 単押し)
+#define US_LBRC    LS(RBKT)     // { (JISの Shift + [む)
+#define US_RBRC    LS(BSLH)     // } (JISの Shift + ]むの右)
+#define US_BSLH    INT3         // \ (JISの ¥￥ 単押し)
+#define US_PIPE    LS(INT3)     // | (JISの Shift + ¥￥)
+
+#define US_SEMI    SEMI         // ;
+#define US_COLON   SQT          // : (JISの :け 単押し)
+#define US_SQT     LS(N7)       // ' (JISの Shift + 7)
+#define US_DQT     LS(N2)       // " (JISの Shift + 2)
+
+#define US_COMMA   COMMA        // ,
+#define US_DOT     DOT          // .
+#define US_LT      LS(COMMA)    // <
+#define US_GT      LS(DOT)      // >
+#define US_SLASH   SLASH        // /
+#define US_QMARK   LS(SLASH)    // ?
+
+// 【Linux / Fcitx5 快適化用】
+#define US_IME     GRAVE        // 半角/全角 (OS側にはGRAVEの位置がトグルとして届く)
+#define US_MHEN    INT5         // 無変換 (左親指でのIMEオフ等に)
+#define US_HENK    INT4         // 変換   (右親指でのIMEオン等に)
 
 /{
  behaviors {
@@ -20,7 +65,7 @@
         semi_morph: semi_morph {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp SEMI>, <&kp SQT>; // 通常時はSEMI(;)、Shift時はSQT(JISでの:)
+            bindings = <&kp US_SEMI>, <&kp US_COLON>; // 通常時はSEMI(;)、Shift時はSQT(JISでの:)
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -37,7 +82,31 @@
 		sqt_morph: sqt_quote_morph {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp LS(N7)>, <&kp LS(N2)>; // 単押しでShift+7(')、Shift押しでShift+2(")
+            bindings = <&kp US_SQT>, <&kp US_SQT>; // 単押しでShift+7(')、Shift押しでShift+2(")
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+		comma_morph: comma_lt_morph {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp US_COMMA>, <&kp US_LT>; // 単押しで(,)、Shift押しで(<)
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+		dot_morph: dot_gt_morph {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp US_DOT>, <&kp US_GT>; // 単押しで(.)、Shift押しで(>)
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+		slash_morph: slash_qmark_morph {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp US_SLASH>, <&kp US_QMARK>; // 単押しで(/)、Shift押しで(?)
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+		bslh_morph: bslh_under_morph {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp US_BSLH>, <&kp US_UNDER>; // 単押しで(\)、Shift押しで(_)
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 	 };
