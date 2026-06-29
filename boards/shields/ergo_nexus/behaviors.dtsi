@@ -45,7 +45,18 @@
 #define US_HENK    INT4         // 変換   (右親指でのIMEオン等に)
 
 /{
- behaviors {
+    macros {
+        // 1. レイヤー1と2を同時にONにするマクロ（前回と同じ）
+        mo_together: mo_together {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &mo 1 &mo 2>
+                , <&macro_pause_for_release>
+                , <&macro_release &mo 1 &mo 2>;
+        };
+    };
+    behaviors {
         hm: home_row_mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -108,6 +119,14 @@
             #binding-cells = <0>;
             bindings = <&kp US_BSLH>, <&kp US_UNDER>; // 単押しで(\)、Shift押しで(_)
             mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        lt_macro: lt_macro {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;            // タップ側の引数（キーコード）を1つ受け取るため「1」
+            flavor = "balanced";             // 迷ったらまずは「balanced」がおすすめ
+            tapping-term-ms = <200>;         // ホールド判定までの時間（好みに応じて調整）
+            quick-tap-ms = <200>;            // ★スペース連打時のレイヤー暴発を防ぐ
+            bindings = <&mo_together>, <&kp>;  // ホールド時にマクロ、タップ時にキー
         };
 	 };
 };
